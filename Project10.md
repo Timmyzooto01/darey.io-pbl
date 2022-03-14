@@ -34,6 +34,7 @@ server {
 * Restart Nginx and make sure the service is up and running
 
 sudo systemctl restart nginx
+
 sudo systemctl status nginx
 
 # REGISTER A NEW DOMAIN NAME AND CONFIGURE SECURED CONNECTION USING SSL/TLS CERTIFICATES
@@ -50,10 +51,13 @@ Update your nginx.conf with server_name www.<your-domain-name.com> instead of se
  Make sure snapd service is active and running
 
 sudo systemctl status snapd
+
 Install certbot
 
 sudo snap install --classic certbot
+
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
+
 sudo certbot --nginx
 
 Test secured access to your Web Solution by trying to reach https://<shally.ml>
@@ -72,6 +76,8 @@ crontab -e
 Add following line:
 
 * */12 * * *   root /usr/bin/certbot renew > /dev/null 2>&1
+
+
 You can always change the interval of this cronjob if twice a day is too often by adjusting schedule expression.
 
 
