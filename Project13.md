@@ -22,14 +22,14 @@ We used include_vars syntax instead of include, this is because Ansible develope
 
 From Ansible version 2.8, the include module is deprecated and variants of include_* must be used. These are:
 
-*include_role
-*include_tasks
-*include_vars
+* include_role
+* include_tasks
+* include_vars
 
 In the same version, variants of import were also introduces, such as:
 
-*import_role
-*import_tasks
+* import_role
+* import_tasks
 
 We made use of special variables {{ playbook_dir }} and {{ inventory_file }}. {{ playbook_dir }} will help Ansible to determine the location of the running playbook, and from there navigate to other path on the filesystem.
 
@@ -82,8 +82,8 @@ Create a pull request amd merge it with the main branch on Github.
 Load Balancer Roles.
 We want to be able to choose which Load Balancer to use, Nginx or Apache, so we need to have two roles respectively:
 
-*Nginx
-*Apache
+* Nginx
+* Apache
 
 Install the Nginx Ansible Role and rename the folder to nginx
 
@@ -94,15 +94,15 @@ Install the Apache Ansible Role and rename the folder to apache
 ansible-galaxy install geerlingguy.apache 
 mv geerlingguy.apache/ apache
 
-*Since we cannot use both Nginx and Apache load balancer, we need to add a condition to enable either one - this is where we can make use of variables.
+* Since we cannot use both Nginx and Apache load balancer, we need to add a condition to enable either one - this is where we can make use of variables.
 
-*Declare a variable in defaults/main.yml file inside the Nginx and Apache roles. Name each variables enable_nginx_lb and enable_apache_lb respectively.
+* Declare a variable in defaults/main.yml file inside the Nginx and Apache roles. Name each variables enable_nginx_lb and enable_apache_lb respectively.
 
-*Set both values to false like this enable_nginx_lb: false and enable_apache_lb: false.
+* Set both values to false like this enable_nginx_lb: false and enable_apache_lb: false.
 
-*Declare another variable in both roles load_balancer_is_required and set its value to false as well
+* Declare another variable in both roles load_balancer_is_required and set its value to false as well
 
-*Update both assignment and site.yml files respectively
+* Update both assignment and site.yml files respectively
 
 
 loadbalancers.yml file is going to look like this (create this file in your static-assignments folder)
@@ -121,9 +121,9 @@ Add this to the site.yml file
         when: load_balancer_is_required 
 
 
-*Now we can make use of env-vars\uat.yml file to define which loadbalancer to use in UAT the environment by setting the respective environmental variable to true.
+* Now we can make use of env-vars\uat.yml file to define which loadbalancer to use in UAT the environment by setting the respective environmental variable to true.
 
-*We will activate load balancer, and enable nginx by setting these in the respective environment’s env-vars file.
+* We will activate load balancer, and enable nginx by setting these in the respective environment’s env-vars file.
 
 enable_nginx_lb: true
 load_balancer_is_required: true
