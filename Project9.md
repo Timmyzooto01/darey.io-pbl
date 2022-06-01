@@ -83,8 +83,9 @@ Click "Build Now" button, if you have configured everything correctly, the build
   cat /mnt/apps/README.md
   ![Screenshot (36)](https://user-images.githubusercontent.com/88409151/158103682-f1a22c05-fbb3-414d-a1a5-f4c25007fc90.png)
 * But you have to give /mnt permission for it not be denied in the console output 
-  
+  ```
   sudo chmod -R 777 /mnt
+  ```
   so i was able to see the changes made in the README.MD file 
   
 
